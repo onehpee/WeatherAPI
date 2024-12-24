@@ -1,0 +1,41 @@
+my_flask_app/: The root directory of your project.
+
+app/: Contains the core application logic.
+
+__init__.py: Initializes the Flask app and registers blueprints.
+
+models.py: Defines your database models (if using an ORM like SQLAlchemy).
+
+routes.py: Defines the main routes of your application.
+
+blueprints/: Contains separate modules for different functionalities (e.g., authentication, user profiles, blog posts).
+
+auth/: Example blueprint for authentication.
+
+__init__.py: Initializes the blueprint.
+
+routes.py: Defines routes for login, registration, etc.
+
+forms.py: Defines forms for user input (e.g., login form).
+
+templates/: Contains HTML templates specific to the blueprint.
+
+static/: Contains static files like CSS, JavaScript, and images.
+
+templates/: Contains HTML templates for your application.
+
+tests/: Contains your unit tests.
+
+config.py: Defines the configuration settings for your app.
+
+requirements.txt: Lists the Python packages required for your app.
+
+run.py: The entry point for running your app.
+
+.env: Stores environment variables (optional).
+
+Key points:
+Use blueprints to organize your code into logical modules.
+Keep templates separate from the core logic.
+Use a clear and consistent naming convention.
+Consider using a virtual environment to manage your project's dependencies.
