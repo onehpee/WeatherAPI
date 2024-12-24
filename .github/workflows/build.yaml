@@ -1,0 +1,24 @@
+name: Build Workflow
+
+run-name: Build Workflow -- ${{github.head_ref || github.ref_name }}
+
+on:
+    push:
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    build-job:
+        name: Build Job
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout Code
+              uses: actions/checkout@v4
+
+            - name: Install Python
+              uses: actions/setup-python@v5
+              with:
+                 python-version: '3.13' 
+
+            - name: Run program
+              run: python run.py
