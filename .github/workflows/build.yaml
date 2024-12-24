@@ -20,5 +20,9 @@ jobs:
               with:
                  python-version: '3.13' 
 
-            - name: Run program
-              run: python run.py
+            - name: Testing commands
+              run: |
+                echo "Will continue after configuration"
+
+            # - name: Run program
+            #   run: python run.py
