@@ -1,7 +1,7 @@
 from flask import Blueprint
 
-routes = Blueprint('route', __name__)
+approutes = Blueprint('route', __name__)
 
-@routes.route('/')
+@approutes.route('/')
 def home():
     return "<h1>Test</h1>"
