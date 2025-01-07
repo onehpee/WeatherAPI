@@ -6,9 +6,9 @@ def create_app():
     app.config['SECRET_KEY'] = 'chama'
     
     from .routes import approutes
-    #from blueprints.auth.routes import auth_routes
+    from .auth import auth
     
     app.register_blueprint(approutes, url_prefix='/')
-    #app.register_blueprint(auth_routes, url_prefix='/')
+    #app.register_blueprint(auth, url_prefix='/')
     
     return app
