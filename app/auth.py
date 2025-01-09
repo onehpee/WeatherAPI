@@ -1,7 +1,6 @@
 from flask import Blueprint, render_template, request, flash
 
-auth = Blueprint('auth', __name__)
-
+auth = Blueprint('auth', __name__, url_prefix='/auth')
 
 @auth.route('/login', method=['GET', 'POST'])
 def login():
