@@ -1,9 +1,9 @@
 from flask import Blueprint, render_template, request, flash
 
-auth_routes = Blueprint('route', __name__)
+auth_routes = Blueprint('auth_route', __name__)
 
 
-@auth_routes.route('/login', method=['GET', 'POST'])
+@auth_routes.route('/login', methods=['GET', 'POST'])
 def login():
     data = request.form
     print(data)
@@ -13,7 +13,7 @@ def login():
 def logout():
     return "<p>Logout</p>"
 
-@auth_routes.route("/signup", method=['GET', 'POST'])
+@auth_routes.route("/sign-up", methods=['GET', 'POST'])
 def sign_up():
     if request.method == 'POST':
         email = request.form.get('email')
