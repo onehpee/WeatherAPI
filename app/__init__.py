@@ -3,7 +3,7 @@ from flask_restx import Api
 
 def create_app():
     app = Flask(__name__, template_folder='blueprints/auth/templates/auth')
-    #encrypt and secure cookies and session data
+    #encrypt and secure cookies and sessions data
     app.config['SECRET_KEY'] = 'chama'
     
     from .routes import approutes
