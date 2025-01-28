@@ -1,15 +1,18 @@
 from flask import Flask
 from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
+import os
 import requests
-
 
 app = Flask(__name__)
 api = Api(app)
 
 def getWeather(location, date1, date2, API_KEY):
     resp = requests.get("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY")
-        
+    
+    print(resp)
+    
+#getWeather('Chicago', '01/27/25')
 
 if __name__ == '__main__':
     app.run(debug=True)
