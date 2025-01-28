@@ -1,21 +1,26 @@
 from flask import Flask
-from flask_restful import Resource, Api
+# from flask_restful import Resource, Api
 from flask_sqlalchemy import SQLAlchemy
+from dotenv import load_dotenv
 import os
 import requests
 
-app = Flask(__name__)
-api = Api(app)
+load_dotenv('.env')
+
+api_key = os.getenv('API_KEY')
+
+# app = Flask(__name__)
+# api = Api(app)
 
 def getWeather(location, date1, date2, API_KEY):
-    resp = requests.get("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY")
+    resp = requests.get("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}/{date1}/{date2}?key={API_KEY}")
     
     print(resp)
     
-#getWeather('Chicago', '01/27/25')
+getWeather('Chicago, US', '2025-01-27','',api_key)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#if __name__ == '__main__':
+#    app.run(debug=True)
 
 # def create_app():
 #     app = Flask(__name__, template_folder='blueprints/auth/templates/auth')
