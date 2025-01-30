@@ -12,12 +12,13 @@ api_key = os.getenv('API_KEY')
 # app = Flask(__name__)
 # api = Api(app)
 
-def getWeather(location, date1, date2, API_KEY):
-    resp = requests.get("https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}/{date1}/{date2}?key={API_KEY}")
+def getWeather(city_name, state_code, country_code, API_key):
+    resp = requests.get(f"http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&appid={API_key}").json()
+    data = resp[0]
+    name, lat, lon = data.get('name'), data.get('lat'), data.get('lon')
+    return name, lat, lon
     
-    print(resp)
-    
-getWeather('Chicago, US', '2025-01-27','',api_key)
+print(getWeather('Chicago','IL','US',api_key))
 
 #if __name__ == '__main__':
 #    app.run(debug=True)
