@@ -15,11 +15,16 @@ api_key = os.getenv('API_KEY')
 def getWeather(city_name, state_code, country_code, API_key):
     resp = requests.get(f"http://api.openweathermap.org/geo/1.0/direct?q={city_name},{state_code},{country_code}&appid={API_key}").json()
     data = resp[0]
-    name, lat, lon = data.get('name'), data.get('lat'), data.get('lon')
-    return name, lat, lon
-    
-print(getWeather('Chicago','IL','US',api_key))
+    lat, lon = data.get('lat'), data.get('lon')
+    return lat, lon
 
+def getCurrentWeather(lat, lon, API_key):
+    resp = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}").json()
+    print(resp)
+    
+if __name__ == "__main__":
+    lat, lon = getWeather('Chicago','IL','US',api_key)
+    getCurrentWeather(lat, lon, api_key)
 #if __name__ == '__main__':
 #    app.run(debug=True)
 
