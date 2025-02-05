@@ -4,10 +4,18 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import os
 import requests
+from dataclasses import dataclass
 
 load_dotenv('.env')
 
 api_key = os.getenv('API_KEY')
+
+@dataclass
+class WeatherData:
+    main: str
+    description: str
+    icon: str
+    temperature: float
 
 # app = Flask(__name__)
 # api = Api(app)
@@ -19,8 +27,8 @@ def getWeather(city_name, state_code, country_code, API_key):
     return lat, lon
 
 def getCurrentWeather(lat, lon, API_key):
-    resp = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}").json()
-    print(resp)
+    resp = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}&units=metric").json()
+    data = WeatherData()
     
 if __name__ == "__main__":
     lat, lon = getWeather('Chicago','IL','US',api_key)
