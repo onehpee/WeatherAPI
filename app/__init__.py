@@ -28,11 +28,23 @@ def getWeather(city_name, state_code, country_code, API_key):
 
 def getCurrentWeather(lat, lon, API_key):
     resp = requests.get(f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API_key}&units=metric").json()
-    data = WeatherData()
+    data = WeatherData(
+    main=resp.get('weather')[0].get('main'),
+    description=resp.get('weather')[0].get('description'),
+    icon=resp.get('weather')[0].get('icon'),
+    temperature=resp.get('main').get('temp')
+    )
+    return data
+ 
+def main(city_name, state_code, country_code):
+    lat, lon = getWeather('Chicago','IL','US',api_key)
+    weather_data = getCurrentWeather(lat, lon, api_key)
+    return weather_data
+
     
 if __name__ == "__main__":
     lat, lon = getWeather('Chicago','IL','US',api_key)
-    getCurrentWeather(lat, lon, api_key)
+    print(getCurrentWeather(lat, lon, api_key))
 #if __name__ == '__main__':
 #    app.run(debug=True)
 
